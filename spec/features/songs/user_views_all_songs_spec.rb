@@ -11,7 +11,7 @@ RSpec.feature "User visits the songs index" do
     song = artist.songs.create(title: "No Woman No Cry")
     song2 = artist.songs.create(title: "Buffalo Soldier")
 
-    visit songs_path
+    visit artist_songs_path(artist.id)
     first('.songs > a').click
 
     expect(page).to have_content "Buffalo Soldier"

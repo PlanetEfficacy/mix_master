@@ -16,6 +16,7 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    @artist = @song.artist
   end
 
   def edit
@@ -33,6 +34,14 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.order(:title)
+  end
+
+  def destroy
+    @song = Song.find(params[:id])
+    @artist = @song.artist
+    @song.destroy
+
+    redirect_to artist_songs_path(@artist)
   end
 
   private
