@@ -24,13 +24,13 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
 
     if @playlist.update(playlist_params)
-      redirect_to playlist_path(@playlist)
+      redirect_to @playlist
     else
       render :edit
     end
   end
 
-  private
+private
 
   def playlist_params
     params.require(:playlist).permit(:name, song_ids: [])
